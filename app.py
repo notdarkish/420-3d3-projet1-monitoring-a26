@@ -9,6 +9,10 @@ class App:
         self.fenetre.title("Monitoring système")
         self.fenetre.resizable(False, False)
 
+        self.fenetre_cpu = tk.Tk()
+        self.fenetre_cpu.title("Monitoring CPU")
+        self.fenetre_cpu.resizable(False, False)
+
         # --- CPU ---
         self.frame_cpu = tk.LabelFrame(self.fenetre, text="CPU", padx=10, pady=10)
         self.frame_cpu.pack(fill=tk.X, padx=10, pady=5)
@@ -19,6 +23,9 @@ class App:
 
         self.label_cpu_80 = tk.Label(self.frame_cpu, text="", font=("Arial", 19))
         self.label_cpu_80.pack()
+
+        self.label_cpu_grand = tk.Label(self.fenetre_cpu, text="", font=("Arial", 48, "bold"))
+        self.label_cpu_grand.pack(pady=20)
 
 
         # --- RAM ---
@@ -62,6 +69,7 @@ class App:
         else:
             self.label_cpu_80.config(text="")
 
+        self.label_cpu_grand.config(text=f"{cpu:.1f}%")
 
         # Mettre à jour RAM
         self.label_ram.config(text=f"{ram:.1f}%")
