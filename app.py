@@ -13,6 +13,11 @@ class App:
         self.fenetre_cpu.title("Monitoring CPU")
         self.fenetre_cpu.resizable(False, False)
 
+        # --- Bouton log ---
+        self.bouton_log = tk.Button(self.fenetre, text= "Désactiver log", command=self.toggle_log)
+        self.bouton_log.pack(pady=10)
+        self.log_active = True
+
         # --- CPU ---
         self.frame_cpu = tk.LabelFrame(self.fenetre, text="CPU", padx=10, pady=10)
         self.frame_cpu.pack(fill=tk.X, padx=10, pady=5)
@@ -46,6 +51,16 @@ class App:
 
         self.rafraichir()
         self.fenetre.mainloop()
+
+
+    def toggle_log(self):
+        self.log_active = not self.log_active
+        if self.log_active:
+            self.bouton_log.config(text="Désactive log")
+        else:
+            self.bouton_log.config(text="Activer log")
+
+
 
     def rafraichir(self):
         # Lire les métriques
@@ -103,9 +118,16 @@ class App:
             f"RAM: {ram:.1f}% | "
             f"Disque: {disque:.1f}%\n"
         )
+<<<<<<< HEAD
         with open("monitoring.log", 'a') as f:
             f.write(ligne)
             print(ligne)
+=======
+
+        if self.log_active:
+            with open("monitoring.log", 'a') as f:
+                f.write(ligne)
+>>>>>>> toggle_log
 
         self.fenetre.after(2000, self.rafraichir)
 
