@@ -118,16 +118,10 @@ class App:
             f"RAM: {ram:.1f}% | "
             f"Disque: {disque:.1f}%\n"
         )
-<<<<<<< HEAD
-        with open("monitoring.log", 'a') as f:
-            f.write(ligne)
-            print(ligne)
-=======
 
         if self.log_active:
             with open("monitoring.log", 'a') as f:
                 f.write(ligne)
->>>>>>> toggle_log
 
         self.fenetre.after(2000, self.rafraichir)
 
