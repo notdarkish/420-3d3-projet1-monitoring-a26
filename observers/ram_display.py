@@ -15,7 +15,7 @@ class AffichageRAM(Observateur):
     def actualiser(self, sujet) -> None:
         # À compléter: Récupérez la valeur RAM depuis sujet.get_donnees()
         donnee_metriques = sujet.get_donnees()
-        donnee_ram = donnee_metriques
+        donnee_ram = donnee_metriques["ram"]
 
         # À compléter: Mettez à jour le label et la barre
         self.label_ram.config(text=f"{donnee_ram:.1f}%")
