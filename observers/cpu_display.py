@@ -21,6 +21,7 @@ class AffichageCPU(Observateur):
         self.label_cpu.config(text=f"{donnee_cpu:.1f}%")
         self._dessiner_barre(donnee_cpu)
 
+
     def _dessiner_barre(self, valeur: float) -> None:
         # À compléter: 
         # Effacez le canvas
@@ -32,7 +33,7 @@ class AffichageCPU(Observateur):
         if valeur < 50:
             couleur_cpu = "green"
         elif valeur < 80:
-            couleur_cpu = "orange"
+            couleur_cpu = "orange" 
         else:
             couleur_cpu = "red"
-        self.canvas_cpu.create_rectangle(0, 0, largeur_cpu, 20, fill=couleur_cpu, outline="")
+        self.canvas_cpu.create_rectangle(0,0, largeur_cpu, 20, fill=couleur_cpu, outline = "")
