@@ -1,13 +1,15 @@
 from models.metrics import MetriquesSysteme
-from views.dashboard import Dashboard
- 
+from observers.cpu_display import AffichageCPU
+import tkinter as tk
+
 metriques = MetriquesSysteme()
-root = Tk.tk() 
+root = tk.Tk()
 cpu = AffichageCPU(root)
 metriques.abonner(cpu)
 
+def rafraichir():
+    metriques.actualiser_metriques()
+    root.after(2000, rafraichir)
 
-
-def rafraichir(self):
-    self.metriques.actualiser_metriques()
-    self.after(2000, self.rafraichir)
+rafraichir()
+root.mainloop()
